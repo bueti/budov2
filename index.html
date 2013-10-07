@@ -48,35 +48,59 @@
     </div>
 
     <div class="container">
-    	<!-- Inputbar -->
       	<div class="row">
-      		<div class="panel panel-default">
-      			<div class="panel-heading">
-      				<h3 class="panel-title">Erfassen</h3>
-        		</div>
-        		<div class="panel-body">
-		          	<form role="form" enctype="multipart/form-data" action="store_task.php" method="POST">
-		            	<div class="form-group">
-		                	<label for="taskInput">Task:</label>
-		                	<input type="text" class="form-control" placeholder="Task" name="task">
+      		<!-- Add Panel -->
+      		<div class="col-md-6">
+	      		<div class="panel panel-default">
+	      			<div class="panel-heading">
+	      				<h3 class="panel-title">Erfassen</h3>
+	        		</div>
+	        		<div class="panel-body">
+			          	<form role="form" enctype="multipart/form-data" action="store_task.php" method="POST">
+			            	<div class="form-group">
+			                	<label for="taskInput">Task:</label>
+			                	<input type="text" class="form-control" placeholder="Task" name="task">
 
-			                <label for="prioInput">Priorität:</label>  
-			                  	<select class="form-control" id="formPrio" name="prio">
-			                    	<option>Normal</option>
-			                    	<option>Hoch</option>
-			                    	<option>Niedrig</option>
-			                	</select>
+				                <label for="prioInput">Priorität:</label>  
+				                  	<select class="form-control" id="formPrio" name="prio">
+				                    	<option>Normal</option>
+				                    	<option>Hoch</option>
+				                    	<option>Niedrig</option>
+				                	</select>
 
-			                <label for="dateInput">Datum:</label>  
-	  	                    <input type="text" class="form-control" id="datepicker" placeholder="Datum..." name="date">  
+				                <label for="dateInput">Datum:</label>  
+		  	                    <input type="text" class="form-control" id="datepicker" placeholder="Datum..." name="date">  
 
-			                <label for="tagInput">Tag:</label>  
-		                    <input type="text" class="form-control" placeholder="#Tag" id="formTag" name="tag">  
-			            </div>
-		            	<button type="button submit" class="btn btn-default" id="saveBtn">Speichern</button> 
-		          	</form>
-              	</div>
-      		</div> 
+				                <label for="tagInput">Tag:</label>  
+			                    <input type="text" class="form-control" placeholder="#Tag" id="formTag" name="tag">  
+				            </div>
+			            	<button type="button submit" class="btn btn-default" id="saveBtn">Speichern</button> 
+			          	</form>
+	              	</div>
+	      		</div>
+      		</div> <!-- add panel end -->
+      		<!-- Task Panel -->
+      		<div class="col-md-6">
+	      		<div class="panel panel-default">
+	      			<div class="panel-heading">
+	      				<h3 class="panel-title">Tasks</h3>
+	        		</div>
+	        		<div class="panel-body">
+	        			<table class="table table-hover">
+	        				<thead>	
+	        					<tr>
+	        						<th>Task</th><th>Priorität</th><th>Date</th><th>Tag</th><th>Status</th>
+	        					</tr>
+	        				</thead>
+	        				<tbody>
+	        					<tr>
+	        						<td>Task1</td><td>Normal</td><td>Gestern</td><td>#allgemein</td><td>Offen</td>
+	        					</tr>
+	        				</tbody>
+	        			</table>
+	        		</div>
+	        	</div>
+	        </div> <!-- task panel end -->
   		</div> <!-- row end -->
   	</div> <!-- container end -->
 
