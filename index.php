@@ -1,3 +1,7 @@
+<?php 
+  include 'display_tasks.php';
+  include 'display_prios.php';
+?>
 <doctype html>
 <html>
 	<head>
@@ -62,10 +66,8 @@
 			                	<input type="text" class="form-control" placeholder="Task" name="task">
 
 				                <label for="prioInput">Priorität:</label>  
-				                  	<select class="form-control" id="formPrio" name="prio">
-				                    	<option>Normal</option>
-				                    	<option>Hoch</option>
-				                    	<option>Niedrig</option>
+                                    <select class="form-control" id="formPrio" name="prio">
+                                        <?php addPrios(); ?>
 				                	</select>
 
 				                <label for="dateInput">Datum:</label>  
@@ -92,16 +94,8 @@
 	        						<th>Task</th><th>Priorität</th><th>Date</th><th>Tag</th><th>Status</th>
 	        					</tr>
 	        				</thead>
-	        				<tbody>
-	        					<tr>
-	        						<td>Task1</td><td>Normal</td><td>10.10.2013</td><td>#allgemein</td><td>Offen</td>
-	        					</tr>
-	        					<tr class="danger">
-	        						<td>Task2</td><td>Hoch</td><td>Gestern</td><td>#allgemein</td><td>Offen</td>
-	        					</tr>
-	        					<tr class="warning">
-	        						<td>Task3</td><td>Normal</td><td>Morgen</td><td>#allgemein</td><td>Offen</td>
-	        					</tr>
+                            <tbody>
+                              <?php showTasks(); ?>
 	        				</tbody>
 	        			</table>
 	        		</div>
