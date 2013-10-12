@@ -10,7 +10,9 @@ function getTasks() {
 
   // Store all tasks
   $stmt = $db->query('
-    SELECT 	tasks.name as tname, 
+    SELECT 
+        tasks.id as tid, 
+        tasks.name as tname, 
 		tasks.date, tasks.tag, 
 		prios.name as pname, 
 		status.name as sname 
@@ -28,9 +30,11 @@ function showTasks() {
   $tasks = getTasks();
 
   foreach($tasks as &$task) {
+    print "<a href=\"./edit_task.php?id=" . $task['tid'] . "\">";
     print "<tr>";
-    print "<td>" . $task['tname'] . "</td><td>" . $task['pname'] . "</td><td>" . $task['date'] . "</td><td>" . $task['tag'] . "</td><td>" . $task['sname'] . "</td>";
+    print "<td><a href=\"./edit_task.php?id=" . $task['tid'] . "\">" . $task['tname'] . "</a></td><td>" . $task['pname'] . "</td><td>" . $task['date'] . "</td><td>" . $task['tag'] . "</td><td>" . $task['sname'] . "</td>";
     print "</tr>";
+    print "</a>";
   }
 }
 
