@@ -9,7 +9,13 @@ function getTasks() {
   $db = connect();
 
   // Store all tasks
-  $stmt = $db->query('SELECT tasks.name as tname,tag,date,prios.name as pname FROM budo_1.tasks, budo_1.prios WHERE tasks.prio = prios.id');
+  $stmt = $db->query('
+    SELECT 	tasks.name as tname, 
+		tasks.date, tasks.tag, 
+		prios.name as pname, 
+		status.name as sname 
+    FROM tasks 
+    LEFT JOIN (status, prios) ON ( status.id = tasks.status AND prios.id=tasks.prio)');
 
   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $tasks[] = $row;
@@ -23,7 +29,7 @@ function showTasks() {
 
   foreach($tasks as &$task) {
     print "<tr>";
-    print "<td>" . $task['tname'] . "</td><td>" . $task['pname'] . "</td><td>" . $task['date'] . "</td><td>" . $task['tag'] . "</td>";
+    print "<td>" . $task['tname'] . "</td><td>" . $task['pname'] . "</td><td>" . $task['date'] . "</td><td>" . $task['tag'] . "</td><td>" . $task['sname'] . "</td>";
     print "</tr>";
   }
 }

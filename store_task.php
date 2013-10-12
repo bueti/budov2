@@ -12,7 +12,7 @@
     // Fill POST infos into key-value store
     $entry = array(
         'task'     => htmlspecialchars($_POST['task']),
-        'tag'    => htmlspecialchars($_POST['tag']),
+        'tag'      => htmlspecialchars($_POST['tag']),
         'prio'     => htmlspecialchars($_POST['prio']),
         'date'     => htmlspecialchars($_POST['date']),
     );
@@ -21,12 +21,14 @@
     $db = connect();
 
     // Insert task
-    $sql = "INSERT INTO budo_1.tasks SELECT '', :task, :prio, :date, :tag FROM prios WHERE name = :prio";
+    $sql = "INSERT INTO budo_1.tasks SELECT NULL, :task, :tag, :date, id, :status 
+      FROM prios WHERE name = :prio";
     $q = $db->prepare($sql);
-    $q->execute(array(':task'=>$entry['task'], 
-                      ':prio'=>$entry['prio'],
-                      ':date'=>$entry['date'],
-                      ':tag' =>$entry['tag'],
+    $q->execute(array(':task'   => $entry['task'], 
+                      ':prio'   => $entry['prio'],
+                      ':tag'    => $entry['tag'],
+                      ':date'   => $entry['date'],
+                      ':status' => 1,
                     ));
 
     header("Location: ./index.php");
