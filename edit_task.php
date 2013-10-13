@@ -54,6 +54,10 @@
 			                    <select class="form-control" id="formStatus" name="status">
                                     <?php addStatus($task['sname']); ?>
 			                	</select> 
+			
+								<label>
+								      <input type="checkbox" name="delete"> Delete me?
+								</label> 
 								<input type="hidden" name="id" value="<?php print $id; ?>">
 				            </div>
 			            	<button type="button submit" class="btn btn-default" id="saveBtn">Update it!</button> 
@@ -61,20 +65,7 @@
 	              	</div>
 	      		</div>
       		</div>
+		</div>
 <?php 
-	// Update task
-	
-    // Insert task
-    // $sql = "INSERT INTO tasks SELECT NULL, :task, :tag, :date, id, :status 
-    //   FROM prios WHERE name = :prio";
-    // $q = $db->prepare($sql);
-    // $q->execute(array(':task'   => $entry['task'], 
-    //                   ':prio'   => $entry['prio'],
-    //                   ':tag'    => $entry['tag'],
-    //                   ':date'   => $entry['date'],
-    //                   ':status' => 1,
-    //                 ));
-
-
 	render_footer();
 ?>

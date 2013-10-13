@@ -17,34 +17,40 @@
         'prio'     => htmlspecialchars($_POST['prio']),
         'date'     => htmlspecialchars($_POST['date']),
 		'status'   => htmlspecialchars($_POST['status']),
+		'delete'   => htmlspecialchars($_POST['delete']),
     );
 
-	print_r($entry);
-	
     // Create database connection
     $db = connect();
 
-    // Update task
-	$sql = "UPDATE tasks 
-	SET 
-		tasks.name   = :task,
-		tasks.tag    = :tag,
-		tasks.date   = :date,
-		tasks.prio 	 = (select id from prios where name = :prio),
-		tasks.status = (select id from status where name = :status)
-	WHERE tasks.id   = :id";
+	// Update or delete?
+	if($entry['delete'] == true) {
+		// Delete task
+		$sql = "delete from tasks where id = :id";
+		$q = $db->prepare($sql);
+		$q->execute(array(':id' => $entry['id']));
+	} else {
+    	// Update task
+		$sql = "UPDATE tasks 
+		SET 
+			tasks.name   = :task,
+			tasks.tag    = :tag,
+			tasks.date   = :date,
+			tasks.prio 	 = (select id from prios where name = :prio),
+			tasks.status = (select id from status where name = :status)
+		WHERE tasks.id   = :id";
 			
-    $q = $db->prepare($sql);
+	    $q = $db->prepare($sql);
 
-	print $sql;
-    $q->execute(array(':task'   => $entry['task'], 
-                         ':prio'   => $entry['prio'],
-                         ':tag'    => $entry['tag'],
-                         ':date'   => $entry['date'],
-                         ':status' => $entry['status'],
-						 ':id' => $entry['id'],
-                       ));
-
+	    $q->execute(array(':task'   => $entry['task'], 
+	                         ':prio'   => $entry['prio'],
+	                         ':tag'    => $entry['tag'],
+	                         ':date'   => $entry['date'],
+	                         ':status' => $entry['status'],
+							 ':id' => $entry['id'],
+	                       ));
+	}
+	
     header("Location: ./index.php");
 
 ?>
