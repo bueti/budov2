@@ -21,14 +21,13 @@
     $db = connect();
 
     // Insert task
-    $sql = "INSERT INTO budo_1.tasks SELECT NULL, :task, :tag, :date, id, :status 
+    $sql = "INSERT INTO budo_1.tasks SELECT NULL, :task, :tag, :date, id, (select id from status where name = 'Open')
       FROM prios WHERE name = :prio";
     $q = $db->prepare($sql);
     $q->execute(array(':task'   => $entry['task'], 
                       ':prio'   => $entry['prio'],
                       ':tag'    => $entry['tag'],
                       ':date'   => $entry['date'],
-                      ':status' => 1,
                     ));
 
     header("Location: ./index.php");

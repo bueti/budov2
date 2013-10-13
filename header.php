@@ -51,9 +51,7 @@ print '<doctype html>
 
 		    <div class="navbar-collapse collapse">
 		        <ul class="nav navbar-nav">
-		          <li class="active"><a href="#">Home</a></li>
-		          <li><a href="./about.html">About</a></li>
-		          <li><a href="./contact.html">Contact</a></li>
+		          <li class="active"><a href="./index.php">Home</a></li>
 		        </ul>
 		    </div><!--/.nav-collapse -->
         </div>
