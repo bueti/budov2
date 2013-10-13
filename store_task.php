@@ -1,6 +1,6 @@
 <?php
 
-  include './include/database.php';
+  require_once './include/database.php';
 
     // Check the rest
     if (empty($_POST['task'])  || empty($_POST['prio']) ||
@@ -16,7 +16,7 @@
         'prio'     => htmlspecialchars($_POST['prio']),
         'date'     => htmlspecialchars($_POST['date']),
     );
-print_r($entry);
+
     // Create database connection
     $db = connect();
 

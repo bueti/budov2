@@ -1,5 +1,5 @@
 <?php
-include 'include/database.php';
+require_once 'include/database.php';
 
 function getTasks() {
   // initializ tasks array
@@ -24,6 +24,25 @@ function getTasks() {
   }
   
   return $tasks;
+}
+
+function getTask($id) {
+  // Create database connection
+  $db = connect();
+
+  // Store all tasks
+  $stmt = $db->query('
+    SELECT 
+        tasks.id as tid, 
+        tasks.name as tname, 
+		tasks.date, tasks.tag, 
+		prios.name as pname, 
+		status.name as sname 
+    FROM tasks 
+    LEFT JOIN (status, prios) ON ( status.id = tasks.status AND prios.id=tasks.prio)
+	WHERE tasks.id =' . $id);
+
+  return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 function showTasks() {
