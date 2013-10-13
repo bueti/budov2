@@ -31,6 +31,6 @@ print_r($entry);
                       ':status' => 1,
                     ));
 
-    //header("Location: ./index.php");
+    header("Location: ./index.php");
 
 ?>
