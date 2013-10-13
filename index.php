@@ -19,7 +19,7 @@
 			          	<form role="form" enctype="multipart/form-data" action="store_task.php" method="POST">
 			            	<div class="form-group">
 			                	<label for="taskInput">Task:</label>
-			                	<input type="text" class="form-control" placeholder="Task" name="task">
+			                	<input type="text" class="form-control" placeholder="Task" name="task" />
 
 				                <label for="prioInput">Priority:</label>  
                                     <select class="form-control" id="formPrio" name="prio">
@@ -27,10 +27,10 @@
 				                	</select>
 
 				                <label for="dateInput">Date:</label>  
-		  	                    <input type="text" class="form-control" id="datepicker" placeholder="Date..." name="date">  
+		  	                    <input type="text" class="form-control" id="datepicker" placeholder="Date..." name="date" />  
 
 				                <label for="tagInput">Tag:</label>  
-			                    <input type="text" class="form-control" placeholder="#Tag" id="formTag" name="tag">  
+			                    <input type="text" class="form-control" placeholder="#Tag" id="formTag" name="tag" />  
 				            </div>
 			            	<button type="button submit" class="btn btn-default" id="saveBtn">Store it!</button> 
 			          	</form>

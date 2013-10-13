@@ -4,7 +4,7 @@
 
     // Check the rest
     if (empty($_POST['task'])  || empty($_POST['prio']) ||
-        empty($_POST['date'])  || empty($_POST['tag']) )
+        empty($_POST['date']) )
     {
         die("Input validation failed");
     }
@@ -16,7 +16,7 @@
         'prio'     => htmlspecialchars($_POST['prio']),
         'date'     => htmlspecialchars($_POST['date']),
     );
-
+print_r($entry);
     // Create database connection
     $db = connect();
 
@@ -31,6 +31,6 @@
                       ':status' => 1,
                     ));
 
-    header("Location: ./index.php");
+    //header("Location: ./index.php");
 
 ?>

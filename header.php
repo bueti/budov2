@@ -9,8 +9,9 @@ print '<doctype html>
 
 		<!-- jQuery (necessary for Bootstrap\'s JavaScript plugins) -->
     	<script src="//code.jquery.com/jquery.js"></script>
+        <script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
-	    <!-- Include Twitter Bootstrap -->
+        <!-- Include Twitter Bootstrap -->
 	    <!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
@@ -24,8 +25,16 @@ print '<doctype html>
 	      body {
 	        padding-top: 60px;  60px to make the container go all the way to the bottom of the topbar 
 	      }
-	    </style>
-	</head>
+        </style>
+      
+        <!-- Datepicker -->  
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+        <script>
+          $(function() {
+            $( "#datepicker" ).datepicker({ dateFormat: "yy-mm-dd" });
+          });
+      </script>      
+    </head>
 
 	<body>
 	<!-- Navbar -->
